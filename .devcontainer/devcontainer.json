@@ -9,5 +9,7 @@
       "onAutoForward": "notify",
       "visibility": "private"
     }
-  }
+  },
+  // Copia o arquivo de exemplo para o .env real se ele não existir
+  "updateContentCommand": "if [ ! -f ../.env ]; then cp ../.env.example ../.env; fi"
 }
