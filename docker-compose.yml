@@ -2,17 +2,22 @@ version: '3.8'
 
 services:
   meu-banco:
-    image: postgres:17
-    container_name: postgres-compras
+    image: ${DB_IMAGE}
+    container_name: ${DB_CONTAINER_NAME}
     environment:
-      # O Docker vai substituir isso pelos valores reais do arquivo .env automaticamente
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:5432"
+    networks:
+      - rede-segura
     volumes:
       - dados_postgres:/var/lib/postgresql/data
 
 volumes:
   dados_postgres:
+
+networks:
+  rede-segura:
+    driver: bridge

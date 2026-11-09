@@ -1,0 +1,13 @@
+{
+  "name": "Meu Ambiente Postgres",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "meu-banco",
+  "shutdownAction": "stopCompose",
+  "portsAttributes": {
+    "5432": {
+      "label": "Banco de Dados Postgres",
+      "onAutoForward": "notify",
+      "visibility": "private"
+    }
+  }
+}
